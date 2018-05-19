@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require("path");
+const { getDistance } = require("./calc.js")
+const db = require("./db.js");
 
 const port = process.env.PORT || 3000;
 
@@ -8,28 +10,19 @@ app.use(express.urlencoded());
 app.use(express.json());  
 app.use(express.static(`${__dirname}./../dist`));
 
+app.get("/catastrophie", (req, resp) => {});
+
 app.post("/user_signup", (req, resp) => {
-  console.log("/user_signup route has been hit");
-  console.log("Params are:", req.body);
-
-  const { 
-    first_name, 
-    last_name, 
-    address, 
-    mobile_phone, 
-    helpability,
-  } = req.body;
-
-  const {
-    food_and_water,
-    shelter,
-    transportation,
-    physical_labor,
-  } = helpability;
+  db.send(req.body)
+    .then(({ data }) => {
+      console.log(data.id);
+    })
 
   resp.end()
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.get("*", (req, resp) => {
+  resp.sendFile(__dirname, "../client/static/index.html");
 });
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
