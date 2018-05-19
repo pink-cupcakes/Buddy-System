@@ -12,9 +12,61 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello
-      </div>
+        <div>
+            <div className="signup_banner">
+                <img className="nationwide_logo" src="https://image4.owler.com/logo/nationwide-insurance_owler_20160223_115330_original.png"></img>
+            </div>
+            <div className="top_register">
+                <h3>The Nationwide Buddy System</h3>
+                <p>
+                    The strength of a community lies in its people. When diasters strike, the<br/>
+                    Nationwide community is ready to help each other recover and rebuild.
+                </p>
+                <button className="initial_register">Register</button>
+            </div>
+            <div className="summary">
+                <p className="summary_contents">
+                    Our Buddy System is an opt-in network of Nationwide members,<br/>
+                    "buddies", who are prepared and ready to help their neighbors in<br/>
+                    times of emergency. If you're impacted by a natural disaster, we will<br/>
+                    connect you with your buddy - someone who can provide you with<br/>
+                    food, shelter, and a helping hand.
+                </p>
+                <img className="summary_img" src="https://bit.ly/2IB9TiR"></img>
+            </div>
+            <div className="explanation_detail">
+                <h3>How it Works</h3>
+                <div className="cards">
+                    <div className="img_card">
+                        <a className="img_container"><img className="explanation_img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh6MkuR7Hr1xiLMYT5YLRgs7zYmSarL9MS7E89QFX1nujn9DVsPg"></img></a>
+                        <p className="card_description">
+                            When a disaster strikes, our<br/>
+                            Buddy System is triggered to<br/>
+                            text Nationwide Buddies in the<br/>
+                            impacted area.
+                        </p>
+                    </div>
+                    <div className="img_card">
+                        <a className="img_container"><img className="explanation_img" src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=959228001844e0370bcb348f9d1e000a&auto=format&fit=crop&w=1050&q=80"></img></a>
+                        <p className="card_description">
+                            Our text will provide you with your<br/>
+                            Buddy's phone number, along with<br/>
+                            information on the resources they can<br/>
+                            provide to you and your family.
+                        </p>
+                    </div>
+                    <div className="img_card">
+                        <a className="img_container"><img className="explanation_img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDkODEPmxpPxPPnuuuwkoJahMvhsa45bo_uAFHZPg4QDxninaU"></img></a>
+                        <p className="card_description">
+                            We will also text your Buddy, alerting<br/>
+                            them that a disaster has impacted you<br/>
+                            and your family and providing them with<br/>
+                            a phone number to reach you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
   }
 }

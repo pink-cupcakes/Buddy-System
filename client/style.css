@@ -1,0 +1,123 @@
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.signup_banner {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    position: sticky;
+    background-color: #cbdee6;
+}
+
+.nationwide_logo {
+    height: 120px;
+    margin: 15px;
+}
+
+.top_register {
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.top_register h3, p {
+    text-align: center;
+}
+
+.initial_register {
+    width: 70px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.summary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    margin: 0px;
+    background-color: #edeeed83;
+}
+
+.summary_contents {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin: 10px;
+    margin-right: 25px;
+}
+
+.summary_img {
+    height: 250px;
+    margin: 25px;
+}
+
+.explanation_detail {
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    border-bottom: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.explanation_detail h3 {
+    text-align: center;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img_card {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_container {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_card img {
+    max-width: 300px;
+}
+
+.card_description {
+    width: 350px;
+}
