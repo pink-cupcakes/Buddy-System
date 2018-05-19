@@ -1,9 +1,8 @@
 const db = require('../db');
 
-const Schema = db.Schema;
 const ObjectId = Schema.ObjectId;
-
-const Person = new Schema({
+const schema = new db.Schema({
+  policyNumber: { type: ObjectId, required: true,  unique: true }
   firstName: { type: String, default: '', lowercase: true, required: true },
   lastName: { type: String, default: '', lowercase: true, required: true },
   contact: {
@@ -11,6 +10,7 @@ const Person = new Schema({
     email: { type: String, required: true },
   },
   household: { type: ObjectId, required: true },
+  additionalMembers: { type: [ObjectId] },
   buddyHosts: {
     1: { type: ObjectId },
     2: { type: ObjectId },
@@ -18,4 +18,6 @@ const Person = new Schema({
   },
   buddyGuests: { type: [ObjectId] },
 });
+
+const Person = db.model('Person', schema);
 
