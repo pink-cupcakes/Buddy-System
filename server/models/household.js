@@ -1,7 +1,8 @@
 const db = require('../db');
 
+const Schema = db.Schema
 const ObjectId = Schema.ObjectId;
-const schema = new db.Schema({
+const Household = db.model('Household', new Schema({
   address: {
     street: { type: String, lowercase: true, required: true },
     city: { type: String, lowercase: true, required: true },
@@ -23,7 +24,20 @@ const schema = new db.Schema({
   maxGuests: { type: Number, required: true },
   primaryHost: { type: ObjectId, required: true },
   guests: { type: [ObjectId], required: true },
-});
+}));
 
-const Household = db.model('Household', schema);
+const create = () => {};
+
+const getById = () => {};
+
+const getAll = () => {};
+
+const update = () => {};
+
+module.exports = {
+  create,
+  getById,
+  getAll,
+  update,
+};
 

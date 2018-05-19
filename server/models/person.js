@@ -1,10 +1,11 @@
 const db = require('../db');
 
+const Schema = db.Schema;
 const ObjectId = Schema.ObjectId;
-const schema = new db.Schema({
-  policyNumber: { type: ObjectId, required: true,  unique: true }
-  firstName: { type: String, default: '', lowercase: true, required: true },
-  lastName: { type: String, default: '', lowercase: true, required: true },
+const Person = db.model('Person', new Schema({
+  policyNumber: { type: ObjectId, default: new ObjectId(),  required: true,  unique: true },
+  firstName: { type: String, lowercase: true, required: true },
+  lastName: { type: String, lowercase: true, required: true },
   contact: {
     phoneNumber: { type: [Number], required: true },
     email: { type: String, required: true },
@@ -17,7 +18,20 @@ const schema = new db.Schema({
     3: { type: ObjectId },
   },
   buddyGuests: { type: [ObjectId] },
-});
+}));
 
-const Person = db.model('Person', schema);
+const create = () => {};
+
+const getById = () => {};
+
+const getAll = () => {};
+
+const update = () => {};
+
+module.exports = {
+  create,
+  getById,
+  getAll,
+  update,
+};
 
