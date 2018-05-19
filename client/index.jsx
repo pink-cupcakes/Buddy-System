@@ -7,11 +7,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: '',
+      lastName: '',
+      policyNum: '',
+      dob: '',
+      foodWater: '',
+      foodWaterCount: '',
+      shelter: '',
+      shelterCount: '',
     };
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value});
+  }
+
+  handleSubmit(event) {
   }
 
   render() {
     return (
+      <div>
         <div>
             <div className="signup_banner">
                 <img className="nationwide_logo" src="https://image4.owler.com/logo/nationwide-insurance_owler_20160223_115330_original.png"></img>
@@ -104,6 +120,45 @@ class App extends React.Component {
                 </div>
             </div>
         </div>
+        Testing: form page
+        <form>
+        
+          <label>First Name</label>
+          <input type="text" name="firstName" />
+          <br/>
+          
+          <label>Last Name</label>
+          <input type="text" name="lastName" />
+          <br/>
+
+          <label>Nationwide Policy Number</label>
+          <input type="text" name="policyNum" />
+          <br/>
+
+          <label>Date of Birth</label>
+          <input type="date" name="dob" />
+          <br/>
+
+          <label>Can you provide food and water?</label>
+          <input type="radio" name="foodWater" value="yes" /> Yes
+          <input type="radio" name="foodWater" value="no" /> No
+          <br/>
+
+          <label>If so, how many people can you provide for?</label>
+          <input type="number" name="foodWaterCount" />
+          <br/>
+
+          <label>Can you provide shelter?</label>
+          <input type="radio" name="shelter" value="yes" /> Yes
+          <input type="radio" name="shelter" value="no" /> No
+          <br/>
+
+          <label>If so, how many people can you provide for?</label>
+          <input type="number" name="shelterCount" />
+          <br/>
+          
+        </form>
+      </div>
     )
   }
 }
