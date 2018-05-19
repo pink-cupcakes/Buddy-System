@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded());
 app.use(express.json());  
-app.use(express.static(path.join(__dirname, "../client/static")));
+app.use(express.static(`${__dirname}./../dist`));
 
 /*
 Route Structure
@@ -110,11 +110,6 @@ app.post("/user_signup", (req, resp) => {
   } = helpability;
 
   resp.end()
-});
-
-app.get("*", (req, resp) => {
-  console.log("*");
-  resp.sendFile(__dirname, "../client/static/index.html");
 });
 
 app.listen(port, () => {
