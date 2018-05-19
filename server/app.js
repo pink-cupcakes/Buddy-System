@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const path = require("path");
-const { getDistance } = require("./calc.js")
+const { getDistance } = require("./calc.js");
 const db = require("./db.js");
+const person = require("./models/person.js");
+const household = require("./models/household.js");
 
 const port = process.env.PORT || 3000;
 
@@ -17,6 +19,8 @@ app.post("/user_signup", (req, resp) => {
     .then(({ data }) => {
       console.log(data.id);
     })
+  
+  person.create()
 
   resp.end()
 });

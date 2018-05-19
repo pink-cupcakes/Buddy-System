@@ -3,7 +3,7 @@ const db = require('../db');
 const Schema = db.Schema;
 const ObjectId = Schema.Types.ObjectId;
 const Person = db.model('Person', new Schema({
-  policyNumber: { type: ObjectId, default: new ObjectId(),  required: true,  unique: true },
+  policyNumber: { type: ObjectId, default: new db.Types.ObjectId(),  required: true,  unique: true },
   firstName: { type: String, lowercase: true, required: true },
   lastName: { type: String, lowercase: true, required: true },
   contact: {
@@ -26,12 +26,12 @@ const Person = db.model('Person', new Schema({
 }));
 
 const create = (personInfo) => {
-  const person = new Person(personInfo)
+  const person = new Person(personInfo);
   return person.save();
 };
 
 const getByPolicyNumber = (policyNumber) => {
-  return Person.find({ policyNumber: ObjectId(policyNumber) }).exec();
+  return Person.find({ policyNumber: db.Types.ObjectId(policyNumber) }).exec();
 };
 
 const getAll = () => {
@@ -44,7 +44,7 @@ const update = (policyNumber, newData) => {
 
 module.exports = {
   create,
-  getById,
+  getByPolicyNumber,
   getAll,
   update,
 };
