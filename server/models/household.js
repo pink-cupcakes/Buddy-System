@@ -1,7 +1,7 @@
 const db = require('../db');
 
 const Schema = db.Schema
-const ObjectId = Schema.ObjectId;
+const ObjectId = Schema.Types.ObjectId;
 const Household = db.model('Household', new Schema({
   address: {
     street: { type: String, lowercase: true, required: true },
@@ -26,13 +26,22 @@ const Household = db.model('Household', new Schema({
   guests: { type: [ObjectId], required: true },
 }));
 
-const create = () => {};
+const create = (householdInfo) => {
+  const household = new Household(householdInfo);
+  return household.save();
+};
 
-const getById = () => {};
+const getById = (householdId) => {
+  return Household.findById(householdId).exec();
+};
 
-const getAll = () => {};
+const getAll = () => {
+  return Household.find({}).exec();
+};
 
-const update = () => {};
+const update = (householdId, newData) => {
+  return Household.findByIdAndUpdate(householdId, newData, { upsert: true }).exec();
+};
 
 module.exports = {
   create,

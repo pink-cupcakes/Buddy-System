@@ -1,7 +1,7 @@
 const db = require('../db');
 
 const Schema = db.Schema;
-const ObjectId = Schema.ObjectId;
+const ObjectId = Schema.Types.ObjectId;
 const Person = db.model('Person', new Schema({
   policyNumber: { type: ObjectId, default: new ObjectId(),  required: true,  unique: true },
   firstName: { type: String, lowercase: true, required: true },
@@ -9,6 +9,11 @@ const Person = db.model('Person', new Schema({
   contact: {
     phoneNumber: { type: [Number], required: true },
     email: { type: String, required: true },
+  },
+  dateOfBirth: {
+    day: { type: Number, required: true },
+    month: { type: Number, required: true },
+    year: { type: Number, required: true },
   },
   household: { type: ObjectId, required: true },
   additionalMembers: { type: [ObjectId] },
@@ -20,13 +25,22 @@ const Person = db.model('Person', new Schema({
   buddyGuests: { type: [ObjectId] },
 }));
 
-const create = () => {};
+const create = (personInfo) => {
+  const person = new Person(personInfo)
+  return person.save();
+};
 
-const getById = () => {};
+const getByPolicyNumber = (policyNumber) => {
+  return Person.find({ policyNumber: ObjectId(policyNumber) }).exec();
+};
 
-const getAll = () => {};
+const getAll = () => {
+  return Person.find({}).exec();
+};
 
-const update = () => {};
+const update = (policyNumber, newData) => {
+  return Person.findOneAndUpdate({ policyNumber }, newData, { upsert: true }).exec();
+};
 
 module.exports = {
   create,
