@@ -108,27 +108,21 @@ class App extends React.Component {
                 <div className="buddy_card_section">
                     <div className="buddy_card">
                         <div className="buddy_icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                            <img src="/assets/food_water_icon.png"></img>
                         </div>
-                        <p>Food and Water</p>
+                        <p><b>Food and Water</b></p>
                     </div>
                     <div className="buddy_card">
                         <div className="buddy_icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                            <img src="/assets/shelter_icon.png"></img>
                         </div>
-                        <p>Shelter</p>
+                        <p><b>Shelter for 3 days</b></p>
                     </div>
                     <div className="buddy_card">
                         <div className="buddy_icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                            <img src="/assets/car_icon.png"></img>
                         </div>
-                        <p>Transportation</p>
-                    </div>
-                    <div className="buddy_card">
-                        <div className="buddy_icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
-                        </div>
-                        <p>Basic Necessities</p>
+                        <p><b>Give them a lift</b></p>
                     </div>
                 </div>
             </div>
@@ -212,6 +206,8 @@ class App extends React.Component {
                     </div>
                     <input className="click_submit" type="submit" value="Next" onClick={this.handleSubmit} />
                 </form>
+            </div>
+            <div className="footer">
             </div>
         </div>
       </div>

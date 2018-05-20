@@ -193,11 +193,14 @@ body {
     flex-direction: row;
     justify-content: center; 
     background-color: rgba(74,144, 226, 0.1) ;
+    height: 225px;
 }
 
 .buddy_card {
-    width: 115px;
+    width: 200px;
     margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .buddy_icon {
@@ -207,16 +210,12 @@ body {
     display: -ms-flexbox;
     display: -webkit-flex;
     align-items: center;
-    justify-content: center;   
-}
-
-.buddy_icon img {
-    width: 50px;
-    height: 50px;
+    justify-content: center;
+    height: 100px;
 }
 
 .buddy_card p {
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .banner_img {
@@ -235,7 +234,6 @@ body {
 
 .sign_up {
     width: 100%;
-    border: 1px solid black;
 }
 
 .signup_form {
@@ -300,6 +298,7 @@ body {
     font-size: 20px;
     background-color: #4A90E2;
     color: whitesmoke;
+    cursor: pointer;
 }
 
 .provide_bool {
@@ -357,4 +356,9 @@ select {
 
 .additional_text {
     margin-bottom: 10px !important;
+}
+
+.footer {
+    background-color: #4A90E2;
+    height: 75px;
 }
