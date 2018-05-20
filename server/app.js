@@ -5,8 +5,8 @@ const { getDistance } = require("./calc.js");
 const db = require("./db.js");
 const person = require("./models/person.js");
 const household = require("./models/household.js");
-const accountSid = 'AC8f013d4354c27467af93ea648723475e';
-const authToken = 'd80d44a2f2e8356ea924dc8e5b969520';
+const accountSid =  process.env.ACC_ID;
+const authToken =  process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 const port = process.env.PORT || 3000;
