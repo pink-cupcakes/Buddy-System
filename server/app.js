@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require("path");
-const { getDistance } = require("./calc.js");
+const { getDistance } = require("./distanceFormula.js");
 const db = require("./db.js");
-// const person = require("./models/person.js");
 const household = require("./models/household.js");
 const accountSid =  process.env.ACC_ID;
 const authToken =  process.env.AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+const client = require("twilio")(accountSid, authToken);
+const nationwide = require("./models/nationwide");
+// const NationwideAPI = require("nationwide")(process.env.SECRET_ID, process.env.SECRET_TOKEN) // this has to be nationwide's internal api
 
 const port = process.env.PORT || 3000;
 
@@ -17,12 +18,14 @@ app.use(express.static(`${__dirname}/../dist/`));
 
 // app.get("/buddies/:id", (req, resp) => {
 app.get("/buddies/jPs49", (req, resp) => {
-  // Look up database for the id param
   const { id } = req.body.id;
-  const data = { 
-    name: "Jesus Christ", 
+  //const data = houseld.find(id)
+
+  //fake data ----------|
+  const data = {// <----|
+    name: "Elon Musk", 
     phoneNumber: "777-777-7777", 
-    address: "Holy Cave Bethlehem, Israel 77777",
+    address: "Olympus Mons, Mars",
     food: true,
     transportation: true,
     lodging: true
@@ -40,19 +43,58 @@ app.get("/catastrophie", (req, resp) => {
       to: '+16287778666'
     })
     .then(message => {
-      console.log(message.sid)
       resp.end()
     })
     .done();
 });
 
 app.post("/user_signup", (req, resp) => {
-  const personData = req.body;
+  const policyNumber = req.body.policyNumber;
+  let personDataFromDB;
 
-  household.create(personData)
-    .then(({ _id })=>{
-      return person.create()
-    });
+  Nationwide.get(policyNumber)
+    .then((personData) => {
+      return household.create(personData)
+    })
+    .then((resp) => {
+      personDataFromDB = resp;
+      return household.findAll()
+    })
+    .then(({ data }) => {
+      const personPosition = personDataFromDB.coordinates;
+
+      let closestWithinThreeMiles;
+      let closestWithinTwelveMiles;
+      let closestWithinFourtyEightMiles;
+
+      for (let i = 0; i < data.length; i++) {
+        const buddy = data[i];
+        const buddyPosition = buddy.coordinates;
+        const distance = getDistance(personPosition, buddyPosition);
+
+        const threeMiles = distance-3;
+        const twelveMiles = distance-12;
+        const fourtyEightMiles = distance-48;
+        
+        if (threeMiles >= 3 && threeMiles < 12) {
+          if (!closestWithinThreeMiles || closestWithinThreeMiles.distance > distance) {
+            closestWithinThreeMiles = { buddy, distance };
+          }
+        }
+        
+        if (twelveMiles >= 12 && twelveMiles < 48) {
+          if (!closestWithinTwelveMiles || closestWithinTwelveMiles.distance > distance) {
+            closestWithinTwelveMiles = { buddy, distance };
+          }
+        }
+
+        if (fourtyEightMiles >= 48 && fourtyEightMiles < 100) {
+          if (!closestWithinFourtyEightMiles || closestWithinFourtyEightMiles.distance > distance) {
+            closestWithinFourtyEightMiles = { buddy, distance };
+          }
+        }
+      }
+    })
 
   resp.end();
 });
