@@ -46,9 +46,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-            <Profile />
-            {/* <div className="signup_banner">
+        {/* <Profile /> */}
+            <div>
+            <div className="signup_banner">
                 <img className="nationwide_logo" src="https://image4.owler.com/logo/nationwide-insurance_owler_20160223_115330_original.png"></img>
             </div>
             <div className="top_register">
@@ -137,58 +137,89 @@ class App extends React.Component {
                         <p>Basic Necessities</p>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
-        Testing: form page
-        <form>
-        
-          <label>First Name</label>
-          <input type="text" value={this.state.firstName} onChange={this.handleChange} name="firstName" />
-          <br/>
-          
-          <label>Last Name</label>
-          <input type="text" value={this.state.lastName} onChange={this.handleChange} name="lastName" />
-          <br/>
-
-          <label>Nationwide Policy Number</label>
-          <input type="text" value={this.state.policyNum} onChange={this.handleChange} name="policyNum" />
-          <br/>
-
-          <label>Date of Birth</label>
-          <input type="date" value={this.state.dob} onChange={this.handleChange} name="dob" />
-          <br/>
-
-          <label>Can you provide food and water?</label>
-          <input type="radio" name="foodWater" value="yes" onChange={this.handleChange} checked={this.state.foodWater === true} /> Yes
-          <input type="radio" name="foodWater" value="no" onChange={this.handleChange} checked={this.state.foodWater === false} /> No
-          <br/>
-
-          <label>If so, how many people can you provide for?</label>
-          <select name="foodWaterCount" onChange={this.handleChange} >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <br/>
-
-          <label>Can you provide shelter?</label>
-          <input type="radio" name="shelter" value="yes" onChange={this.handleChange} checked={this.state.shelter === true} /> Yes
-          <input type="radio" name="shelter" value="no" onChange={this.handleChange} checked={this.state.shelter === false} /> No
-          <br/>
-
-          <label>If so, how many people can you provide for?</label>
-          <select name="shelterCount" onChange={this.handleChange} >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <br/>
-
-          <input type="submit" value="Submit" onClick={this.handleSubmit} />
-          
-        </form>
+        <div className="sign_up">
+            <div className="sign_up_blurb">
+                <h2>Our Commitment to You</h2>
+                <p>
+                    At Nationwide, our mission is to protect you and prepare for what might happen tomorrow. We<br/>
+                    strive to not only provide the best experience after a disaster has happened, but also taking<br/>
+                    measures to protect our members and their communities prior.
+                </p>
+            </div>
+            <div className="sign_section">
+                <h1>Register for the Nationwide Buddy System</h1>
+                <form className="signup_form">
+                    <div className="form">
+                        <div className="left_column">
+                            <div className="text_input">
+                                <label>First Name <font color="red">*</font></label>
+                                <input className="name_input" type="text" value={this.state.firstName} onChange={this.handleChange} name="firstName" />
+                            </div>
+                            <div className="text_input">
+                                <label>Nationwide Policy Number <font color="red">*</font></label>
+                                <input type="text" value={this.state.policyNum} onChange={this.handleChange} name="policyNum" />
+                            </div>
+                            <div className="provide_bool additional_text">
+                                <label>At a minimum, you will need to provide food and water. How many people can you provide for? <font color="red">*</font></label>
+                            </div>
+                            <div className="provide_bool">
+                                <label>Can you provide shelter? <font color="red">*</font></label>
+                                <a className="bool">
+                                    <span className="true"><input type="radio" name="shelter" value="yes" onChange={this.handleChange} checked={this.state.shelter === true} />Yes</span>
+                                    <span className="false"><input type="radio" name="shelter" value="no" onChange={this.handleChange} checked={this.state.shelter === false} />No</span>
+                                </a>
+                            </div>
+                            <div className="provide_bool">
+                                <label>Can you provide transportation? <font color="red">*</font></label>
+                                <a className="bool">
+                                    <span className="true"><input type="radio" name="transport" value="yes" onChange={this.handleChange} checked={this.state.transport === true} />Yes</span>
+                                    <span className="false"><input type="radio" name="transport" value="no" onChange={this.handleChange} checked={this.state.transport === false} />No</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="right_column">
+                            <div className="text_input">
+                                <label>Last Name <font color="red">*</font></label>
+                                <input className="name_input" type="text" value={this.state.lastName} onChange={this.handleChange} name="lastName" />
+                            </div>
+                            <div className="text_input">
+                                <label>Date of Birth <font color="red">*</font></label>
+                                <input type="date" value={this.state.dob} onChange={this.handleChange} name="dob" />
+                            </div>
+                            <div className="provide_food_quantity provide">
+                                <select name="foodWaterCount" onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div className="provide_shelter_quantity provide">
+                                <label>If so, how many people can you provide for?</label>
+                                <select name="shelterCount" onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div className="provide_transport_quantity provide">
+                                <label>If so, how many people can you provide for?</label>
+                                <select name="transportCount" onChange={this.handleChange} >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input className="click_submit" type="submit" value="Next" onClick={this.handleSubmit} />
+                </form>
+            </div>
+        </div>
       </div>
     )
   }

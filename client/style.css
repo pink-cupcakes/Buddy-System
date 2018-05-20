@@ -14,7 +14,6 @@ body {
     display: flex;
     align-content: center;
     justify-content: center;
-    position: fixed;
     background-color: #cbdee6;
     border-bottom: 1px solid black;
 }
@@ -173,4 +172,135 @@ body {
 
 .quote p {
     font-size: 25px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.sign_up {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.signup_form {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+}
+
+.sign_up .left_column {
+    width: 40%;
+    margin: 20px;
+}
+
+.sign_up .left_column div {
+    margin: 10px;
+    margin-bottom: 20px;
+    height: 80px;
+}
+
+.sign_up .right_column div {
+    margin: 10px;
+    margin-bottom: 20px;
+    height: 80px;
+}
+
+.sign_up .right_column {
+    width: 40%;
+    margin: 20px;
+}
+
+.sign_up_blurb {
+    text-align: center;
+}
+
+.text_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.text_input input {
+    width: 350px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.589);
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 10px;
+}
+
+.click_submit {
+    width: 175px;
+    height: 50px;
+    margin-bottom: 50px;
+    border-radius: 7px;
+    border: 0px solid black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    background-color: #4A90E2;
+    color: whitesmoke;
+}
+
+.provide_bool {
+    display: flex;
+    flex-direction: column;
+}
+
+.bool {
+    margin-left: 0px;
+    margin-top: 15px;
+    display: flex;
+}
+
+.bool input {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.false {
+    margin-left: 70px;
+}
+
+.sign_section {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.158);
+}
+
+.sign_section h1 {
+    text-align: center;
+    color: #4A90E2
+}
+
+.provide select {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+select {
+    width: 60px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.80);
+    height: 25px;
+    background-color: rgba(196, 196, 196, 0.212);
+    border-radius: 0px;
+}
+
+.additional_text {
+    margin-bottom: 10px !important;
 }
