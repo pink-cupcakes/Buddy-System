@@ -55,11 +55,9 @@ class App extends React.Component {
         transportCount: this.state.transportCount,
     })
     .then(() => {
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                axios.get('/catastrophie');
-            }, 15000);
-        })
+        setTimeout(() => {
+            axios.get('/catastrophie');
+        }, 15000);
     })
     .catch((error) => new Error(error))
   }
