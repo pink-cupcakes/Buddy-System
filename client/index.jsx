@@ -66,6 +66,43 @@ class App extends React.Component {
                     </div>
                 </div>
             </div>
+            <div className="buddy_explanation">
+                <div className="buddy_text">
+                    <h3>What does it mean to be a Buddy?</h3>
+                    <p>
+                        Nationwide Buddies, at a minimum, need to provide food and water for their buddy and<br/>
+                        the buddy's family in times of emergencies. Other resources that are especially helpful<br/>
+                        during these times include shelter, transportation, and basic necessities. You'll be able to<br/>
+                        select the resources you can provide during registration.
+                    </p>
+                </div>
+                <div className="buddy_card_section">
+                    <div className="buddy_card">
+                        <div className="buddy_icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                        </div>
+                        <p>Food and Water</p>
+                    </div>
+                    <div className="buddy_card">
+                        <div className="buddy_icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                        </div>
+                        <p>Shelter</p>
+                    </div>
+                    <div className="buddy_card">
+                        <div className="buddy_icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                        </div>
+                        <p>Transportation</p>
+                    </div>
+                    <div className="buddy_card">
+                        <div className="buddy_icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png"></img>
+                        </div>
+                        <p>Basic Necessities</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
   }
