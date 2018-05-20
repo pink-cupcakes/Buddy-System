@@ -29,7 +29,6 @@ class App extends React.Component {
   handleChange(event) {
     var key = event.target.name;
     var val = event.target.value;
-    console.log(val);
     if (val === 'yes') {
       this.setState({ [key]: true });
     } else if (val === 'no') {
@@ -57,13 +56,10 @@ class App extends React.Component {
     })
     .then(() => {
         setTimeout(() => {
-            alert('Thanos is back.');
             axios.get('/catastrophie');
-        }, 30000);
+        }, 15000);
     })
-    .catch((err) => {
-        console.log(err);
-    })
+    .catch((error) => new Error(error))
   }
 
   render() {
