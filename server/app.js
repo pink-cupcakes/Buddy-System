@@ -51,13 +51,13 @@ app.get("/catastrophie", (req, resp) => {
 
   client.messages
     .create({
-      body: "Our system has detected a brushfire impacting Sonoma County. Your Nationwide Buddy, Karen, is ready to help you and your family when you have reached safety. She can provide you with food and water, shelter for 5 days, and transportation as needed. Please reach out to her at (415)638-1251 and let her know how she can help.",
+      body: "Our system has detected a flood impacting Houston. Your Nationwide Buddy, Karen, is ready to help you and your family when you have reached safety. She can provide you with food and water, shelter for 3 days, and transportation as needed. Please reach out to her at (512)638-1251 and let her know how she can help.",
       from: "+19519014443",
       to: "+14082429232"
     })
     .then(() => {
       return client.messages.create({
-        body: "For more information, visit: nationwide.com/buddies/K4Tfa8yD",
+        body: "For more information, visit: https://invis.io/ZRJ2PBGED2G",
         from: "+19519014443",
         to: "+14082429232"
       })
@@ -66,13 +66,13 @@ app.get("/catastrophie", (req, resp) => {
 
   client.messages
     .create({
-      body: "There is a brushfire spreading in Sonoma County. Your Nationwide Buddy, Able, lives in the impacted area and might be in need of your help. Please reach out to her at (415)284-8675.",
+      body: "There is a flood impacting Houston. Your Nationwide Buddy, Able, lives in the impacted area and might be in need of your help. Please reach out to her at (713)284-8675.",
       from: "+19519014443",
       to: "+16287778666"
     })
     .then(() => {
       return client.messages.create({
-        body: "For more information, visit: nationwide.com/buddies/w2xF31oY",
+        body: "For more information, visit: https://invis.io/VAJ2PAP7HC8 ",
         from: "+19519014443",
         to: "+16287778666"
       })
