@@ -30,7 +30,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "faker": "^4.1.0",
+<<<<<<< HEAD
     "file-loader": "^1.1.11",
+=======
+    "nodemon": "^1.17.4",
+>>>>>>> dummy data
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },
