@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const db = require('../db');
 
 const Schema = db.Schema;
