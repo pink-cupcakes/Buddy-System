@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Profile from './components/Profile.jsx'
 import Banner from './components/Banner.jsx';
 
@@ -40,8 +41,27 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
-    var obj = this.state;
+    axios.post('/user_signup', {
+        dob: this.state.dob,
+        firstName: this.state.firstName,
+        foodWater: this.state.foodWater,
+        foodWaterCount: this.state.foodWaterCount,
+        lastName: this.state.lastName,
+        policyNum: this.state.policyNum,
+        shelter: this.state.shelter,
+        shelterCount: this.state.shelterCount,
+        transport: this.state.transport,
+        transportCount: this.state.transportCount,
+    })
+    .then(() => {
+        setTimeout(() => {
+            alert('Thanos is back.');
+            axios.get('/catastrophie');
+        }, 30000);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
   }
 
   render() {
