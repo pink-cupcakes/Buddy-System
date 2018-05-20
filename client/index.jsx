@@ -59,7 +59,7 @@ class App extends React.Component {
         setTimeout(() => {
             alert('Thanos is back.');
             axios.get('/catastrophie');
-        }, 30000);
+        }, 3000);
     })
     .catch((err) => {
         console.log(err);

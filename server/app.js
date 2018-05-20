@@ -36,23 +36,35 @@ app.get("/buddies/jPs49", (req, resp) => {
 });
 
 app.get("/catastrophie", (req, resp) => {
+  // NationwideAPI.GetPeopleWithinDisasterDistance()
+  //   .then((people) => {
+  //     for (let i = 0; i < people.length; i++) {
+  //       const person = people[i];
+  //       client.messages
+  //         .create({
+  //           body: 'The world is ending :( ',
+  //           from: '+19519014443',
+  //           to: person.phoneNumber
+  //         })
+  //         .done();
+  //     }
+  //   })
+  //   .then(() => resp.end())
   client.messages
     .create({
-      body: 'http://localhost:3000/buddies/jPs49',
-      from: '+19519014443',
-      to: '+16287778666'
-    })
-    .then(message => {
-      resp.end()
+      body: "The world is ending :(",
+      from: "+19519014443",
+      to: "+14082429232"
     })
     .done();
 });
 
 app.post("/user_signup", (req, resp) => {
-  const policyNumber = req.body.policyNumber;
-  let personDataFromDB;
+  // const policyNumber = req.body.policyNumber;
+  // let personDataFromDB;
+  console.log(req.body)
 
-  Nationwide.get(policyNumber)
+  nationwide.get(policyNumber)
     .then((personData) => {
       return household.create(personData)
     })
@@ -94,10 +106,18 @@ app.post("/user_signup", (req, resp) => {
           }
         }
       }
-      return household.addBuddies()
+      return household.addBuddies(
+        personDataFromDB._id,
+        { 
+          closestWithinThreeMiles, 
+          closestWithinTwelveMiles, 
+          closestWithinFourtyEightMiles
+        });
     })
-    // .then
-
+    .then(() => {
+      resp.end();
+    })
+    .catch((error) => console.error(error));
   resp.end();
 });
 
