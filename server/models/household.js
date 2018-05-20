@@ -23,8 +23,8 @@ const Household = db.model('Household', new Schema({
     water: { type: Number },
   },
   maxGuests: { type: Number, required: true },
-  primaryHost: { type: ObjectId, required: true },
-  guests: { type: [ObjectId], required: true },
+  primaryHost: { type: ObjectId },
+  guests: { type: [ObjectId] },
 }));
 
 const HOUSEHOLD_DATA = {
