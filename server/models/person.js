@@ -28,7 +28,7 @@ const Person = db.model('Person', new Schema({
 
 const PERSON_DATA = {
   count: 3,
-  1: {
+  0: {
     firstName: 'jesus',
     lastName: 'christ',
     contact: {
@@ -49,7 +49,7 @@ const PERSON_DATA = {
     },
     buddyGuests: [2, 3],
   },
-  2: {
+  1: {
     firstName: 'alan',
     lastName: 'c',
     contact: {
@@ -70,7 +70,7 @@ const PERSON_DATA = {
     },
     buddyGuests: [2, 3],
   },
-  3: {
+  2: {
     firstName: 'david',
     lastName: 'k',
     contact: {
