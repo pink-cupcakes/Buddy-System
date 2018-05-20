@@ -125,7 +125,8 @@ const getAll = () => {
   // return Household.find({}).exec();
   const households = [];
   for (let i = 0; i < HOUSEHOLD_DATA.count; ++i) {
-    result.push(HOUSEHOLD_DATA[i]);
+    const obj = Object.assign({ id: i }, HOUSEHOLD_DATA[i])
+    households.push(obj);
   }
   return households;
 };

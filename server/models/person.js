@@ -26,21 +26,101 @@ const Person = db.model('Person', new Schema({
   buddyGuests: { type: [ObjectId] },
 }));
 
+const PERSON_DATA = {
+  count: 3,
+  1: {
+    firstName: 'jesus',
+    lastName: 'christ',
+    contact: {
+      phoneNumber: [911, 123, 4567],
+      email: 'jc@heav.en'
+    },
+    dateOfBirth: {
+      day: 25,
+      month: 12,
+      year: 1,
+    },
+    household: 4,
+    additionalMembers: [],
+    buddyHosts: {
+      1: 3,
+      2: 2,
+      3: 1,
+    },
+    buddyGuests: [2, 3],
+  },
+  2: {
+    firstName: 'alan',
+    lastName: 'c',
+    contact: {
+      phoneNumber: [911, 123, 4567],
+      email: 'ac@email.me'
+    },
+    dateOfBirth: {
+      day: 9,
+      month: 9,
+      year: 1994,
+    },
+    household: 4,
+    additionalMembers: [],
+    buddyHosts: {
+      1: 3,
+      2: 2,
+      3: 1,
+    },
+    buddyGuests: [2, 3],
+  },
+  3: {
+    firstName: 'david',
+    lastName: 'k',
+    contact: {
+      phoneNumber: [911, 123, 4567],
+      email: 'dk@email.me'
+    },
+    dateOfBirth: {
+      day: 4,
+      month: 20,
+      year: 1990,
+    },
+    household: 4,
+    additionalMembers: [],
+    buddyHosts: {
+      1: 3,
+      2: 2,
+      3: 1,
+    },
+    buddyGuests: [2, 3],
+  },
+};
+
 const create = (personInfo) => {
-  const person = new Person(personInfo);
-  return person.save();
+  // const person = new Person(personInfo);
+  // return person.save();
+  const id = PERSON_DATA.count;
+  PERSON_DATA[id] = personInfo;
+  ++PERSON_DATA.count;
+  return id;
 };
 
 const getByPolicyNumber = (policyNumber) => {
-  return Person.find({ policyNumber: db.Types.ObjectId(policyNumber) }).exec();
+  // return Person.find({ policyNumber: db.Types.ObjectId(policyNumber) }).exec();
+  return PERSON_DATA[policyNumber];
 };
 
 const getAll = () => {
-  return Person.find({}).exec();
+  // return Person.find({}).exec();
+  const persons = [];
+  for (let i = 0; i < PERSON_DATA.count; ++i) {
+    const obj = Object.assign({ policyNumber: i }, PERSON_DATA[i]);
+    persons.push(obj);
+  }
+  return persons;
 };
 
 const update = (policyNumber, newData) => {
-  return Person.findOneAndUpdate({ policyNumber }, newData, { upsert: true }).exec();
+  // return Person.findOneAndUpdate({ policyNumber }, newData, { upsert: true }).exec();
+  _.merge(PERSON_DATA[policyNumber], newData);
+  return PERSON_DATA[policyNumber];
 };
 
 module.exports = {
