@@ -67,7 +67,6 @@ a:link {
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    border-bottom: 1px solid black;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -86,11 +85,16 @@ a:link {
 
 .summary {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid black;
     margin: 0px;
-    background-color: #edeeed83;
+    background-color: rgba(74,144, 226, 0.1) ;
+    height: 250px;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .summary_contents {
@@ -101,8 +105,20 @@ a:link {
     margin-right: 25px;
 }
 
+.summary_text {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.bold_text {
+    font-size: 25px;
+    margin: 10px;
+    text-align: left;
+}
+
 .summary_img {
-    height: 250px;
+    height: 140px;
     margin: 25px;
 }
 
@@ -114,15 +130,16 @@ a:link {
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    border-bottom: 1px solid black;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 0px;
+    height: 400px;
 }
 
-.explanation_detail h3 {
+.explanation_detail h2 {
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .cards {
@@ -162,7 +179,8 @@ a:link {
     display: -webkit-flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; 
+    flex-direction: column;
+    background-color: rgba(74,144, 226, 0.1) ;
 }
 
 .buddy_text p, h3 {
@@ -170,16 +188,23 @@ a:link {
     width: 100%;
 }
 
+.buddy_text h3 {
+    margin-top: 60px;
+}
+
 .buddy_card_section {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    border-bottom: 1px solid black;    
+    justify-content: center; 
+    background-color: rgba(74,144, 226, 0.1) ;
+    height: 225px;
 }
 
 .buddy_card {
-    width: 115px;
+    width: 200px;
     margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .buddy_icon {
@@ -189,16 +214,12 @@ a:link {
     display: -ms-flexbox;
     display: -webkit-flex;
     align-items: center;
-    justify-content: center;   
-}
-
-.buddy_icon img {
-    width: 50px;
-    height: 50px;
+    justify-content: center;
+    height: 100px;
 }
 
 .buddy_card p {
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .banner_img {
@@ -217,7 +238,6 @@ a:link {
 
 .sign_up {
     width: 100%;
-    border: 1px solid black;
 }
 
 .signup_form {
@@ -282,6 +302,7 @@ a:link {
     font-size: 20px;
     background-color: #4A90E2;
     color: whitesmoke;
+    cursor: pointer;
 }
 
 .provide_bool {
@@ -339,4 +360,9 @@ select {
 
 .additional_text {
     margin-bottom: 10px !important;
+}
+
+.footer {
+    background-color: #4A90E2;
+    height: 75px;
 }
