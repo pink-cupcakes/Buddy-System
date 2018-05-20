@@ -10,7 +10,9 @@ The Nationwide Buddy System
     <p className="banner_description">
 The strength of a community lies in its people. When diasters strike, the Nationwide community is ready to help each other recover and rebuild.
     </p>
-    <button className="banner_reg_button" type="button">Register</button>
+    <a href="#register_form">
+      <button className="banner_reg_button" type="button">Register</button>
+    </a>
   </div>
 );
 

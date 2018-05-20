@@ -138,7 +138,7 @@ class App extends React.Component {
                     measures to protect our members and their communities prior.
                 </p>
             </div>
-            <div className="sign_section">
+            <div className="sign_section" id="register_form">
                 <h1>Register for the Nationwide Buddy System</h1>
                 <form className="signup_form">
                     <div className="form">
