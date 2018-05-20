@@ -12,17 +12,34 @@ class App extends React.Component {
       policyNum: '',
       dob: '',
       foodWater: '',
-      foodWaterCount: '',
+      foodWaterCount: 0,
       shelter: '',
-      shelterCount: '',
+      shelterCount: 0,
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value});
+    var key = event.target.name;
+    var val = event.target.value;
+    console.log(val);
+    if (val === 'yes') {
+      this.setState({ [key]: true });
+    } else if (val === 'no') {
+      this.setState({ [key]: false });
+    } else if (val === '1' || val === '2'|| val === '3' || val === '4') {
+      this.setState({ [key]: parseInt(val) });
+    } else {
+      this.setState({ [key]: val });
+    }
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    var obj = this.state;
   }
 
   render() {
@@ -124,38 +141,50 @@ class App extends React.Component {
         <form>
         
           <label>First Name</label>
-          <input type="text" name="firstName" />
+          <input type="text" value={this.state.firstName} onChange={this.handleChange} name="firstName" />
           <br/>
           
           <label>Last Name</label>
-          <input type="text" name="lastName" />
+          <input type="text" value={this.state.lastName} onChange={this.handleChange} name="lastName" />
           <br/>
 
           <label>Nationwide Policy Number</label>
-          <input type="text" name="policyNum" />
+          <input type="text" value={this.state.policyNum} onChange={this.handleChange} name="policyNum" />
           <br/>
 
           <label>Date of Birth</label>
-          <input type="date" name="dob" />
+          <input type="date" value={this.state.dob} onChange={this.handleChange} name="dob" />
           <br/>
 
           <label>Can you provide food and water?</label>
-          <input type="radio" name="foodWater" value="yes" /> Yes
-          <input type="radio" name="foodWater" value="no" /> No
+          <input type="radio" name="foodWater" value="yes" onChange={this.handleChange} checked={this.state.foodWater === true} /> Yes
+          <input type="radio" name="foodWater" value="no" onChange={this.handleChange} checked={this.state.foodWater === false} /> No
           <br/>
 
           <label>If so, how many people can you provide for?</label>
-          <input type="number" name="foodWaterCount" />
+          <select name="foodWaterCount" onChange={this.handleChange} >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
           <br/>
 
           <label>Can you provide shelter?</label>
-          <input type="radio" name="shelter" value="yes" /> Yes
-          <input type="radio" name="shelter" value="no" /> No
+          <input type="radio" name="shelter" value="yes" onChange={this.handleChange} checked={this.state.shelter === true} /> Yes
+          <input type="radio" name="shelter" value="no" onChange={this.handleChange} checked={this.state.shelter === false} /> No
           <br/>
 
           <label>If so, how many people can you provide for?</label>
-          <input type="number" name="shelterCount" />
+          <select name="shelterCount" onChange={this.handleChange} >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
           <br/>
+
+          <input type="submit" value="Submit" onClick={this.handleSubmit} />
           
         </form>
       </div>
