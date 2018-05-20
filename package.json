@@ -8,6 +8,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/app.js",
+    "gen-data": "node scripts/generate-data.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "faker": "^4.1.0",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },
