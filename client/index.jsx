@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Profile from './components/Profile.jsx'
 import Banner from './components/Banner.jsx';
+import Confirmation from './components/Confirmation.jsx';
 
 import css from './style.css';
 
@@ -17,6 +18,7 @@ class App extends React.Component {
       foodWaterCount: 0,
       shelter: '',
       shelterCount: 0,
+      confirm: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,12 +42,12 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
     var obj = this.state;
+    this.setState({ confirm: true });
   }
 
   render() {
-    return (
+    return ((this.state.confirm) ? <Confirmation /> :
       <div>
         <div>
             <Banner />
