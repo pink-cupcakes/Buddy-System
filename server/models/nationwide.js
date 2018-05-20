@@ -20,13 +20,6 @@ const create = ({ firstName, lastName, houseHold }) => {
 
 const findByPolicyNumber = (policyNumber) => NationwideModel.findById(policyNumber).exec();
 
-create({firstName: "david", lastName: "david"})
-  .then(({ _id }) => findByPolicyNumber(_id))
-  .then((data) => {
-    console.log("PERSON found by POLICY NUMBER")
-    console.log(data)
-  });
-
 module.exports = {
   create,
   findByPolicyNumber

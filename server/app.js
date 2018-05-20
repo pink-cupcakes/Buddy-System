@@ -4,16 +4,17 @@ const path = require("path");
 const { getDistance } = require("./distanceFormula.js");
 const db = require("./db.js");
 const household = require("./models/household.js");
-const accountSid =  process.env.ACC_ID;
-const authToken =  process.env.AUTH_TOKEN;
+const nationwide = require("./models/nationwide.js");
+const accountSid = process.env.ACC_ID;
+const authToken = process.env.AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
-const nationwide = require("./models/nationwide"); // Fake nationwide database
+// const nationwide = require("./models/nationwide"); // Fake nationwide database
 // const NationwideAPI = require("nationwide")(process.env.SECRET_ID, process.env.SECRET_TOKEN) // this has to be nationwide's internal api
 
 const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded());
-app.use(express.json());  
+app.use(express.json());
 app.use(express.static(`${__dirname}/../dist/`));
 
 // app.get("/buddies/:id", (req, resp) => {
@@ -47,7 +48,7 @@ app.get("/catastrophie", (req, resp) => {
   //     }
   //   })
   //   .then(() => resp.end())
-  
+
   client.messages
     .create({
       body: "Our system has detected a brushfire impacting Sonoma County. Your Nationwide Buddy, Karen, is ready to help you and your family when you have reached safety. She can provide you with food and water, shelter for 5 days, and transportation as needed. Please reach out to her at (415)638-1251 and let her know how she can help.",
@@ -81,63 +82,87 @@ app.get("/catastrophie", (req, resp) => {
 
 app.post("/user_signup", (req, resp) => {
   // WHEN WE HAVE NATIONWIDE DATABASE THIS SHOULD WORK
+  // const requestBody = req.body;
   // const policyNumber = req.body.policyNumber;
   // let personDataFromDB;
 
-  // nationwide.get(policyNumber)
-  //   .then((personData) => {
-  //     return household.create(personData)
-  //   })
-  //   .then((resp) => {
-  //     personDataFromDB = resp;
-  //     return household.findAll()
-  //   })
-  //   .then(({ data }) => {
-  //     const personPosition = personDataFromDB.coordinates;
+  // THIS WILL WORK WHEN THERE IS DATA IN NATIONWIDE DB
+  /* nationwide.findByPolicyNumber(policyNumber)
+    .then((resp) => {
+      const {
+        firstName,
+        lastName,
+        household,
+      } = resp;
+      const id = resp.policyNumber;
 
-  //     let closestWithinThreeMiles;
-  //     let closestWithinTwelveMiles;
-  //     let closestWithinFourtyEightMiles;
+      const personData = {
+        firstName,
+        lastName,
+        household,
+        id,
+        shelter: requestBody.shelter,
+        shelterCount: requestBody.shelterCount,
+        foodWater: requestBody.foodWater,
+        foodWaterCount: requestBody.foodWaterCount,
+      };
 
-  //     for (let i = 0; i < data.length; i++) {
-  //       const buddy = data[i];
-  //       const buddyPosition = buddy.coordinates;
-  //       const distance = getDistance(personPosition, buddyPosition);
+      return household.create(personData)
+    })
+    .then((resp) => household.findAll())
+    .then(({ data }) => {
+      const personPosition = personDataFromDB.coordinates;
 
-  //       const threeMiles = distance-3;
-  //       const twelveMiles = distance-12;
-  //       const fourtyEightMiles = distance-48;
-        
-  //       if (threeMiles >= 3 && threeMiles < 12) {
-  //         if (!closestWithinThreeMiles || closestWithinThreeMiles.distance > distance) {
-  //           closestWithinThreeMiles = { buddy, distance };
-  //         }
-  //       }
-        
-  //       if (twelveMiles >= 12 && twelveMiles < 48) {
-  //         if (!closestWithinTwelveMiles || closestWithinTwelveMiles.distance > distance) {
-  //           closestWithinTwelveMiles = { buddy, distance };
-  //         }
-  //       }
+      let closestWithinThreeMiles;
+      let closestWithinTwelveMiles;
+      let closestWithinFourtyEightMiles;
 
-  //       if (fourtyEightMiles >= 48 && fourtyEightMiles < 100) {
-  //         if (!closestWithinFourtyEightMiles || closestWithinFourtyEightMiles.distance > distance) {
-  //           closestWithinFourtyEightMiles = { buddy, distance };
-  //         }
-  //       }
-  //     }
-  //     return household.addBuddies(
-  //       personDataFromDB._id,
-  //       { 
-  //         closestWithinThreeMiles, 
-  //         closestWithinTwelveMiles, 
-  //         closestWithinFourtyEightMiles
-  //       });
-  //   })
-  //   .then(() => {
-  //     resp.end();
-  //   })
-  //   .catch((error) => console.error(error));
+      for (let i = 0; i < data.length; i++) {
+        const buddy = data[i];
+        const buddyPosition = buddy.coordinates;
+        const distance = getDistance(personPosition, buddyPosition);
+
+        const threeMiles = distance - 3;
+        const twelveMiles = distance - 12;
+        const fourtyEightMiles = distance - 48;
+
+        if (threeMiles >= 3 && threeMiles < 12) {
+          if (!closestWithinThreeMiles || closestWithinThreeMiles.distance > distance) {
+            if (buddy.guests < 3) {
+              closestWithinThreeMiles = { buddy, distance };
+            }
+          }
+        }
+
+        if (twelveMiles >= 12 && twelveMiles < 48) {
+          if (!closestWithinTwelveMiles || closestWithinTwelveMiles.distance > distance) {
+            if (buddy.guests < 3) {
+              closestWithinTwelveMiles = { buddy, distance };
+            }
+          }
+        }
+
+        if (fourtyEightMiles >= 48 && fourtyEightMiles < 100) {
+          if (!closestWithinFourtyEightMiles || closestWithinFourtyEightMiles.distance > distance) {
+            if (buddy.guests < 3) {
+              closestWithinFourtyEightMiles = { buddy, distance };
+            }
+          }
+        }
+      }
+
+      return household.update(
+        personDataFromDB._id,
+        {
+          closestWithinThreeMiles,
+          closestWithinTwelveMiles,
+          closestWithinFourtyEightMiles
+        });
+    })
+    .then(() => {
+      resp.end();
+    })
+    .catch((error) => console.error(error)); */
   resp.end();
 });
 

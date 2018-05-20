@@ -29,7 +29,6 @@ class App extends React.Component {
   handleChange(event) {
     var key = event.target.name;
     var val = event.target.value;
-    console.log(val);
     if (val === 'yes') {
       this.setState({ [key]: true });
     } else if (val === 'no') {
