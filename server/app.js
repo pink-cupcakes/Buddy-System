@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded());
 app.use(express.json());  
-app.use(express.static(`${__dirname}./../dist`));
+app.use(express.static(`${__dirname}/../dist/`));
 
 // app.get("/buddies/:id", (req, resp) => {
 app.get("/buddies/jPs49", (req, resp) => {
