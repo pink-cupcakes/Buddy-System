@@ -53,6 +53,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     padding: 8px 36px;
+    cursor: pointer;
 }
 
 a:link {
