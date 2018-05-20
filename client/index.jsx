@@ -56,14 +56,13 @@ class App extends React.Component {
         transportCount: this.state.transportCount,
     })
     .then(() => {
-        setTimeout(() => {
-            alert('Thanos is back.');
-            axios.get('/catastrophie');
-        }, 3000);
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                axios.get('/catastrophie');
+            }, 15000);
+        })
     })
-    .catch((err) => {
-        console.log(err);
-    })
+    .catch((error) => new Error(error))
   }
 
   render() {

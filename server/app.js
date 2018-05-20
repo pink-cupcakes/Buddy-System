@@ -7,7 +7,7 @@ const household = require("./models/household.js");
 const accountSid =  process.env.ACC_ID;
 const authToken =  process.env.AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
-const nationwide = require("./models/nationwide");
+const nationwide = require("./models/nationwide"); // Fake nationwide database
 // const NationwideAPI = require("nationwide")(process.env.SECRET_ID, process.env.SECRET_TOKEN) // this has to be nationwide's internal api
 
 const port = process.env.PORT || 3000;
@@ -17,26 +17,24 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/../dist/`));
 
 // app.get("/buddies/:id", (req, resp) => {
-app.get("/buddies/jPs49", (req, resp) => {
+app.get("/buddies/:id", (req, resp) => {
+  let catastrophieCoordinates;
   const { id } = req.body.id;
-  //const data = houseld.find(id)
-
-  //fake data ----------|
-  const data = {// <----|
-    name: "Elon Musk", 
-    phoneNumber: "777-777-7777", 
-    address: "Olympus Mons, Mars",
-    food: true,
-    transportation: true,
-    lodging: true
-  };
-
-  resp.send(JSON.stringify(data));
-  resp.end();
+  NationwideAPI.getCatastrophieCoordinate()
+    .then(({ coordinates }) => {
+      catastrophieCoordinates = coordinates;
+      return household.find(id);
+    })
+    .then((person) => {
+      const closestBuddy = getClosestBuddy(person.buddies);
+      resp.send(JSON.stringify(closestBuddy));
+      resp.end();
+    });
 });
 
 app.get("/catastrophie", (req, resp) => {
-  // NationwideAPI.GetPeopleWithinDisasterDistance()
+  // WHEN WE HAVE NATIONWIDE DATABASE THIS SHOULD WORK
+  // NationwideAPI.GetPeopleWithinDisasterRadius()
   //   .then((people) => {
   //     for (let i = 0; i < people.length; i++) {
   //       const person = people[i];
@@ -60,64 +58,64 @@ app.get("/catastrophie", (req, resp) => {
 });
 
 app.post("/user_signup", (req, resp) => {
+  // WHEN WE HAVE NATIONWIDE DATABASE THIS SHOULD WORK
   // const policyNumber = req.body.policyNumber;
   // let personDataFromDB;
-  console.log(req.body)
 
-  nationwide.get(policyNumber)
-    .then((personData) => {
-      return household.create(personData)
-    })
-    .then((resp) => {
-      personDataFromDB = resp;
-      return household.findAll()
-    })
-    .then(({ data }) => {
-      const personPosition = personDataFromDB.coordinates;
+  // nationwide.get(policyNumber)
+  //   .then((personData) => {
+  //     return household.create(personData)
+  //   })
+  //   .then((resp) => {
+  //     personDataFromDB = resp;
+  //     return household.findAll()
+  //   })
+  //   .then(({ data }) => {
+  //     const personPosition = personDataFromDB.coordinates;
 
-      let closestWithinThreeMiles;
-      let closestWithinTwelveMiles;
-      let closestWithinFourtyEightMiles;
+  //     let closestWithinThreeMiles;
+  //     let closestWithinTwelveMiles;
+  //     let closestWithinFourtyEightMiles;
 
-      for (let i = 0; i < data.length; i++) {
-        const buddy = data[i];
-        const buddyPosition = buddy.coordinates;
-        const distance = getDistance(personPosition, buddyPosition);
+  //     for (let i = 0; i < data.length; i++) {
+  //       const buddy = data[i];
+  //       const buddyPosition = buddy.coordinates;
+  //       const distance = getDistance(personPosition, buddyPosition);
 
-        const threeMiles = distance-3;
-        const twelveMiles = distance-12;
-        const fourtyEightMiles = distance-48;
+  //       const threeMiles = distance-3;
+  //       const twelveMiles = distance-12;
+  //       const fourtyEightMiles = distance-48;
         
-        if (threeMiles >= 3 && threeMiles < 12) {
-          if (!closestWithinThreeMiles || closestWithinThreeMiles.distance > distance) {
-            closestWithinThreeMiles = { buddy, distance };
-          }
-        }
+  //       if (threeMiles >= 3 && threeMiles < 12) {
+  //         if (!closestWithinThreeMiles || closestWithinThreeMiles.distance > distance) {
+  //           closestWithinThreeMiles = { buddy, distance };
+  //         }
+  //       }
         
-        if (twelveMiles >= 12 && twelveMiles < 48) {
-          if (!closestWithinTwelveMiles || closestWithinTwelveMiles.distance > distance) {
-            closestWithinTwelveMiles = { buddy, distance };
-          }
-        }
+  //       if (twelveMiles >= 12 && twelveMiles < 48) {
+  //         if (!closestWithinTwelveMiles || closestWithinTwelveMiles.distance > distance) {
+  //           closestWithinTwelveMiles = { buddy, distance };
+  //         }
+  //       }
 
-        if (fourtyEightMiles >= 48 && fourtyEightMiles < 100) {
-          if (!closestWithinFourtyEightMiles || closestWithinFourtyEightMiles.distance > distance) {
-            closestWithinFourtyEightMiles = { buddy, distance };
-          }
-        }
-      }
-      return household.addBuddies(
-        personDataFromDB._id,
-        { 
-          closestWithinThreeMiles, 
-          closestWithinTwelveMiles, 
-          closestWithinFourtyEightMiles
-        });
-    })
-    .then(() => {
-      resp.end();
-    })
-    .catch((error) => console.error(error));
+  //       if (fourtyEightMiles >= 48 && fourtyEightMiles < 100) {
+  //         if (!closestWithinFourtyEightMiles || closestWithinFourtyEightMiles.distance > distance) {
+  //           closestWithinFourtyEightMiles = { buddy, distance };
+  //         }
+  //       }
+  //     }
+  //     return household.addBuddies(
+  //       personDataFromDB._id,
+  //       { 
+  //         closestWithinThreeMiles, 
+  //         closestWithinTwelveMiles, 
+  //         closestWithinFourtyEightMiles
+  //       });
+  //   })
+  //   .then(() => {
+  //     resp.end();
+  //   })
+  //   .catch((error) => console.error(error));
   resp.end();
 });
 
