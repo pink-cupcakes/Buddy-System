@@ -9,18 +9,50 @@ body {
 }
 
 .signup_banner {
-    height: 170px;
+    height: 425px;
     width: 100%;
-    display: flex;
     align-content: center;
     justify-content: center;
+    background-repeat: no-repeat;
     background-color: #cbdee6;
-    border-bottom: 1px solid black;
+    background-image: url('/assets/nationwide_hero_1024px.png');
+    background-size: cover;
 }
 
 .nationwide_logo {
-    height: 120px;
-    margin: 15px;
+    display: block;
+    margin: 0 auto 0 auto;
+    padding: 56px 0 48px 0;
+    height: 58px;
+    width: 153px;
+}
+
+.banner_header {
+    text-align: center;
+    color: white;
+}
+
+.banner_description {
+    display: block;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    max-width: 640px;
+}
+
+.banner_reg_button {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    display: block;
+    margin: 32px  auto 0 auto;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding: 8px 36px;
 }
 
 .top_register {

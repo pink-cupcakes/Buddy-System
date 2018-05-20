@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Profile from './components/Profile.jsx'
+import Banner from './components/Banner.jsx';
 
 import css from './style.css';
 
@@ -46,19 +47,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Profile /> */}
-            <div>
-            <div className="signup_banner">
-                <img className="nationwide_logo" src="https://image4.owler.com/logo/nationwide-insurance_owler_20160223_115330_original.png"></img>
-            </div>
-            <div className="top_register">
-                <h3>The Nationwide Buddy System</h3>
-                <p>
-                    The strength of a community lies in its people. When diasters strike, the<br/>
-                    Nationwide community is ready to help each other recover and rebuild.
-                </p>
-                <button className="initial_register">Register</button>
-            </div>
+        <div>
+            <Banner />
             <div className="summary">
                 <p className="summary_contents">
                     Our Buddy System is an opt-in network of Nationwide members,<br/>

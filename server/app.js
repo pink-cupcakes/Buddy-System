@@ -7,7 +7,7 @@ const person = require("./models/person.js");
 const household = require("./models/household.js");
 const accountSid =  process.env.ACC_ID;
 const authToken =  process.env.AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+// const client = require('twilio')(accountSid, authToken);
 
 const port = process.env.PORT || 3000;
 
@@ -32,19 +32,19 @@ app.get("/buddies/jPs49", (req, resp) => {
   resp.end();
 });
 
-app.get("/catastrophie", (req, resp) => {
-  client.messages
-    .create({
-      body: 'http://localhost:3000/buddies/jPs49',
-      from: '+19519014443',
-      to: '+16287778666'
-    })
-    .then(message => {
-      console.log(message.sid)
-      resp.end()
-    })
-    .done();
-});
+// app.get("/catastrophie", (req, resp) => {
+//   client.messages
+//     .create({
+//       body: 'http://localhost:3000/buddies/jPs49',
+//       from: '+19519014443',
+//       to: '+16287778666'
+//     })
+//     .then(message => {
+//       console.log(message.sid)
+//       resp.end()
+//     })
+//     .done();
+// });
 
 app.post("/user_signup", (req, resp) => {
   const personData = req.body;
