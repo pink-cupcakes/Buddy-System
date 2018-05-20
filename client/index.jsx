@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Profile from './components/Profile.jsx'
 
 import css from './style.css';
 
@@ -46,7 +47,8 @@ class App extends React.Component {
     return (
       <div>
         <div>
-            <div className="signup_banner">
+            <Profile />
+            {/* <div className="signup_banner">
                 <img className="nationwide_logo" src="https://image4.owler.com/logo/nationwide-insurance_owler_20160223_115330_original.png"></img>
             </div>
             <div className="top_register">
@@ -135,7 +137,7 @@ class App extends React.Component {
                         <p>Basic Necessities</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
         Testing: form page
         <form>

@@ -165,3 +165,12 @@ body {
 .buddy_card p {
     font-size: 12px;
 }
+
+.banner_img {
+    width: 100%;
+    height: 400px;
+}
+
+.quote p {
+    font-size: 25px;
+}
