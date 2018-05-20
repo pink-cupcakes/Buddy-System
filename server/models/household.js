@@ -2,30 +2,7 @@ const _ = require('lodash');
 const db = require('../db');
 
 const Schema = db.Schema
-const ObjectId = Schema.Types.ObjectId;
-const Household = db.model('Household', new Schema({
-  address: {
-    street: { type: String, lowercase: true, required: true },
-    city: { type: String, lowercase: true, required: true },
-    state: { type: String, lowercase: true, required: true },
-    zipcode: { type: Number, required: true },
-  },
-  geolocation: {
-    longitude: { type: Number, required: true },
-    latitude: { type: Number, required: true },
-  },
-  amenities: {
-    bath: { type: Boolean },
-    bed: { type: Number },
-    clothing: { type: Number },
-    firstAid: { type: Number },
-    food: { type: Number },
-    water: { type: Number },
-  },
-  maxGuests: { type: Number, required: true },
-  primaryHost: { type: ObjectId },
-  guests: { type: [ObjectId] },
-}));
+const ObjectId = Schema.Types.ObjectId;;
 
 const HOUSEHOLD_DATA = {
   count: 4,
