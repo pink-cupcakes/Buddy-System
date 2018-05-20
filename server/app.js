@@ -94,7 +94,9 @@ app.post("/user_signup", (req, resp) => {
           }
         }
       }
+      return household.addBuddies()
     })
+    // .then
 
   resp.end();
 });
