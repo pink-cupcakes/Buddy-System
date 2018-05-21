@@ -23,3 +23,10 @@ Instructions:
     `npm install`
 
     This pulls all the dependencies from package.json and installs them.
+
+3. Then run the following commands in their own respective tabs to the build the bundle.js file as well as begin the server:
+
+    `npm run react-dev`
+    `npm run server-dev`
+
+4. The project is now running on 'http://localhost:3000/#register_form'
