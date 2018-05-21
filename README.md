@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nationwide: Buddies on your side
 
 ## Introduction
@@ -23,3 +24,7 @@ Instructions:
     `npm install`
 
     This pulls all the dependencies from package.json and installs them.
+=======
+# Buddy-System
+This was a winning Hackathon entry for a volunteer buddy system in the event of a natural catastrophe.
+>>>>>>> 3c1c09a1db0ced6c1c813e727d407b647aa513a2
