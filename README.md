@@ -16,7 +16,7 @@ Instructions:
 
 1. Clone this repo here:
 
-   https://github.com/aqchin/buddy-system.git
+   https://github.com/pink-cupcakes/Buddy-System.git
 
 2. Then in your terminal, navigate to the project and run:
 
