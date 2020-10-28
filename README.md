@@ -1,7 +1,7 @@
 # Nationwide: Buddies on your side
 
 ## Introduction
-Welcome to Nationwide's buddy system! :raised_hands: This is a great product which allows for us to bring our community together in a new way
+Welcome to the 2018 Nationwide's Hackathon winner, the buddy system! :raised_hands: This is a great product which allows for us to bring our community together in a new way
 
 ## Getting started
 
